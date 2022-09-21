@@ -20,8 +20,13 @@ function ToDoList() {
   };
 
   useEffect(() => {
-    localStorage.setItem("createdList", createList);
+    localStorage.setItem("createdList", JSON.stringify(createList));
   }, [createList]);
+
+  const deleteItem = (item) => {
+    setCreateList(createList.filter((itemList) => itemList.id !== item.id));
+    alert(`${item} has been deleted successfully`);
+  };
 
   return (
     <>
@@ -36,7 +41,7 @@ function ToDoList() {
           />
         </div>
         <button onClick={addToList}>Add to list</button>
-        <ListItem createList={createList} />
+        <ListItem createList={createList} deleteItem={deleteItem} />
       </div>
     </>
   );
