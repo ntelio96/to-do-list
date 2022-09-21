@@ -1,6 +1,5 @@
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
+
 import ListItem from "../ListItem/ListItem";
 
 import "./to-do-list.css";
@@ -10,8 +9,10 @@ function ToDoList() {
   const [listItem, setListItem] = useState("");
 
   const addToList = () => {
+    const id = new Date().getTime().toString();
+    const newList = { item: listItem, id: id };
     if (listItem !== "") {
-      setCreateList([...createList, listItem]);
+      setCreateList([...createList, newList]);
     } else {
       alert("You have to fill the input field");
     }
