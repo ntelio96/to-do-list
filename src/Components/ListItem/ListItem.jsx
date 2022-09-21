@@ -8,9 +8,7 @@ function ListItem({ createList }) {
           {createList !== [] ? (
             <ul>
               {createList.map((item) => (
-                <li key={item.id}>
-                  {item.item} {item.id}
-                </li>
+                <li key={item.id}>{item.item}</li>
               ))}
             </ul>
           ) : (
