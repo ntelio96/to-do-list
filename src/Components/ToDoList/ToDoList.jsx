@@ -26,11 +26,18 @@ function ToDoList() {
 
   const deleteItem = (item) => {
     setcreateToDo(createToDo.filter((todo) => todo.id !== item.id));
-    alert(`${item} has been deleted successfully`);
   };
 
-  console.log(createToDo);
-
+  const toggleComplete = (id) => {
+    setcreateToDo(
+      [...createToDo].map((todo) => {
+        if (todo.id === id) {
+          todo.completed = !todo.completed;
+        }
+        return todo;
+      })
+    );
+  };
   return (
     <>
       <div className="to__do-container">
@@ -44,7 +51,11 @@ function ToDoList() {
           />
         </div>
         <button onClick={addToList}>Add to list</button>
-        <ListItem createToDo={createToDo} deleteItem={deleteItem} />
+        <ListItem
+          createToDo={createToDo}
+          deleteItem={deleteItem}
+          toggleComplete={toggleComplete}
+        />
       </div>
     </>
   );
