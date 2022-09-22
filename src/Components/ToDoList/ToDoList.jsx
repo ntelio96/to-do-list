@@ -7,6 +7,8 @@ import "./to-do-list.css";
 function ToDoList() {
   const [createToDo, setcreateToDo] = useState([]);
   const [listItem, setListItem] = useState("");
+  const [todoEdit, setTodoEdit] = useState(null);
+  const [editText, setEditText] = useState("");
 
   const addToList = () => {
     const id = new Date().getTime().toString();
