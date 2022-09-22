@@ -10,7 +10,7 @@ function ToDoList() {
 
   const addToList = () => {
     const id = new Date().getTime().toString();
-    const newList = { item: listItem, id: id };
+    const newList = { item: listItem, id: id, completed: false };
     if (listItem !== "") {
       setcreateToDo([...createToDo, newList]);
     } else {
