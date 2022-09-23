@@ -7,9 +7,10 @@ import "./to-do-list.css";
 function ToDoList() {
   const [createToDo, setcreateToDo] = useState([]);
   const [listItem, setListItem] = useState("");
-  const [todoEdit, setTodoEdit] = useState(null);
+  const [editTodo, setEditTodo] = useState(null);
   const [editText, setEditText] = useState("");
 
+  //add to do's to list
   const addToList = () => {
     const id = new Date().getTime().toString();
     const newList = { item: listItem, id: id, completed: false };
@@ -26,10 +27,12 @@ function ToDoList() {
     localStorage.setItem("createdList", JSON.stringify(saveList));
   }, [createToDo]);
 
+  // delete to do out of the list
   const deleteItem = (item) => {
     setcreateToDo(createToDo.filter((todo) => todo.id !== item.id));
   };
 
+  //mark completed tasks checkbox
   const toggleComplete = (id) => {
     setcreateToDo(
       [...createToDo].map((todo) => {
@@ -40,6 +43,7 @@ function ToDoList() {
       })
     );
   };
+
   return (
     <>
       <div className="to__do-container">
