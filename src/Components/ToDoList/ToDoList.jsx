@@ -22,10 +22,10 @@ function ToDoList() {
     setListItem("");
   };
 
-  useEffect(() => {
-    const saveList = [...createToDo];
-    localStorage.setItem("createdList", JSON.stringify(saveList));
-  }, [createToDo]);
+  // useEffect(() => {
+  //   const saveList = [...createToDo];
+  //   localStorage.setItem("createdList", JSON.stringify(saveList));
+  // }, [createToDo]);
 
   // delete to do out of the list
   const deleteItem = (item) => {
@@ -42,6 +42,19 @@ function ToDoList() {
         return todo;
       })
     );
+  };
+
+  // more readable example
+  const editTodoList = (id) => {
+    const updatedTodos = [...createToDo].map((todo) => {
+      if (todo.id === id) {
+        todo.text = editText;
+      }
+      return todo;
+    });
+    setcreateToDo(updatedTodos);
+    setEditTodo(null);
+    setEditText("");
   };
 
   return (
@@ -61,6 +74,11 @@ function ToDoList() {
           createToDo={createToDo}
           deleteItem={deleteItem}
           toggleComplete={toggleComplete}
+          editTodoList={editTodoList}
+          setEditTodo={setEditTodo}
+          setEditText={setEditText}
+          editText={editText}
+          editTodo={editTodo}
         />
       </div>
     </>

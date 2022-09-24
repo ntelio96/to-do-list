@@ -2,7 +2,16 @@ import React from "react";
 import { useState } from "react";
 import EditList from "../EditList/EditList";
 
-function ListItem({ createToDo, deleteItem, toggleComplete }) {
+function ListItem({
+  createToDo,
+  deleteItem,
+  toggleComplete,
+  editTodoList,
+  setEditTodo,
+  editTodo,
+  setEditText,
+  editText,
+}) {
   return (
     <>
       <div className="list__item-container">
@@ -17,8 +26,14 @@ function ListItem({ createToDo, deleteItem, toggleComplete }) {
                     onChange={() => toggleComplete(item.id)}
                     checked={item.completed}
                   />
-                  <button>edit</button>
+                  <button onChange={setEditTodo(item.id)}>edit</button>
                   <button onClick={() => deleteItem(item)}>delete</button>
+                  {}
+                  <EditList
+                    editTodoList={editTodoList}
+                    setEditText={setEditText}
+                    editText={editText}
+                  />
                 </>
               ))}
             </ul>
