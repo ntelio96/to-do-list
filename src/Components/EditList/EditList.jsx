@@ -10,7 +10,7 @@ function EditList({ editTodoList, setEditText, editText }) {
           value={editText}
           onChange={(e) => setEditText(e.target.value)}
         />
-        <button onClick={editTodoList}>Submit</button>
+        <button onClick={() => editTodoList}>Submit</button>
       </form>
     </div>
   );

@@ -5,7 +5,7 @@ import ListItem from "../ListItem/ListItem";
 import "./to-do-list.css";
 
 function ToDoList() {
-  const [createToDo, setcreateToDo] = useState([]);
+  const [createTodo, setCreateTodo] = useState([]);
   const [listItem, setListItem] = useState("");
   const [editTodo, setEditTodo] = useState(null);
   const [editText, setEditText] = useState("");
@@ -15,27 +15,36 @@ function ToDoList() {
     const id = new Date().getTime().toString();
     const newList = { item: listItem, id: id, completed: false };
     if (listItem !== "") {
-      setcreateToDo([...createToDo, newList]);
+      setCreateTodo([...createTodo, newList]);
     } else {
       alert("You have to fill the input field");
     }
     setListItem("");
   };
 
-  // useEffect(() => {
-  //   const saveList = [...createToDo];
-  //   localStorage.setItem("createdList", JSON.stringify(saveList));
-  // }, [createToDo]);
+  useEffect(() => {
+    const temporary = JSON.stringify(createTodo);
+    localStorage.setItem("todos", temporary);
+  }, [createTodo]);
+
+  useEffect(() => {
+    const temporary = localStorage.getItem("todos");
+    const loadedTodos = JSON.parse(temporary);
+
+    if (loadedTodos) {
+      setCreateTodo(loadedTodos);
+    }
+  }, []);
 
   // delete to do out of the list
   const deleteItem = (item) => {
-    setcreateToDo(createToDo.filter((todo) => todo.id !== item.id));
+    setCreateTodo(createTodo.filter((todo) => todo.id !== item.id));
   };
 
   //mark completed tasks checkbox
   const toggleComplete = (id) => {
-    setcreateToDo(
-      [...createToDo].map((todo) => {
+    setCreateTodo(
+      [...createTodo].map((todo) => {
         if (todo.id === id) {
           todo.completed = !todo.completed;
         }
@@ -44,15 +53,15 @@ function ToDoList() {
     );
   };
 
-  // more readable example
+  // more readable example (edit)
   const editTodoList = (id) => {
-    const updatedTodos = [...createToDo].map((todo) => {
+    const updatedTodos = [...createTodo].map((todo) => {
       if (todo.id === id) {
         todo.text = editText;
       }
       return todo;
     });
-    setcreateToDo(updatedTodos);
+    setCreateTodo(updatedTodos);
     setEditTodo(null);
     setEditText("");
   };
@@ -71,7 +80,7 @@ function ToDoList() {
         </div>
         <button onClick={addToList}>Add to list</button>
         <ListItem
-          createToDo={createToDo}
+          createTodo={createTodo}
           deleteItem={deleteItem}
           toggleComplete={toggleComplete}
           editTodoList={editTodoList}

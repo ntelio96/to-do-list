@@ -3,7 +3,7 @@ import { useState } from "react";
 import EditList from "../EditList/EditList";
 
 function ListItem({
-  createToDo,
+  createTodo,
   deleteItem,
   toggleComplete,
   editTodoList,
@@ -16,30 +16,18 @@ function ListItem({
     <>
       <div className="list__item-container">
         <div className="list__item-list">
-          {createToDo !== [] ? (
+          {createTodo.map((todo) => (
             <ul>
-              {createToDo.map((item) => (
-                <>
-                  <li key={item.id}>{item.item}</li>
-                  <input
-                    type="checkbox"
-                    onChange={() => toggleComplete(item.id)}
-                    checked={item.completed}
-                  />
-                  <button onChange={setEditTodo(item.id)}>edit</button>
-                  <button onClick={() => deleteItem(item)}>delete</button>
-                  {}
-                  <EditList
-                    editTodoList={editTodoList}
-                    setEditText={setEditText}
-                    editText={editText}
-                  />
-                </>
-              ))}
+              <li key={todo.id}>{todo.item}</li>
+              <input
+                type="checkbox"
+                onChange={() => toggleComplete(todo.id)}
+                checked={todo.completed}
+              />
+              <button onChange={() => setEditTodo(todo.id)}>edit</button>
+              <button onClick={() => deleteItem(todo)}>delete</button>
             </ul>
-          ) : (
-            ""
-          )}
+          ))}
         </div>
       </div>
     </>
@@ -47,3 +35,11 @@ function ListItem({
 }
 
 export default ListItem;
+
+{
+  /* <EditList
+  editTodoList={editTodoList}
+  setEditText={setEditText}
+  editText={editText}
+/> */
+}
