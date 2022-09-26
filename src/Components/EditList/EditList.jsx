@@ -1,7 +1,7 @@
 import React from "react";
 import "./edit-list.css";
 
-function EditList({ editTodoList, setEditText, editText, createTodo }) {
+function EditList({ editTodoList, setEditText, editText, todo }) {
   return (
     <div className="edit__list-container">
       <form className="edit__list-form">
@@ -10,8 +10,7 @@ function EditList({ editTodoList, setEditText, editText, createTodo }) {
           value={editText}
           onChange={(e) => setEditText(e.target.value)}
         />
-        <button onClick={() => editTodoList(createTodo)}>Submit</button>
-        {console.log(editTodoList())}
+        <button onClick={() => editTodoList(todo.id)}>Submit</button>
       </form>
     </div>
   );

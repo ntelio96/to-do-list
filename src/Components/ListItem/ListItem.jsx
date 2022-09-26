@@ -23,7 +23,6 @@ function ListItem({
                   editTodoList={editTodoList}
                   setEditText={setEditText}
                   editText={editText}
-                  createTodo={createTodo}
                 />
               )}
               <li>{todo.item}</li>
