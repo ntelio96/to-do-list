@@ -17,14 +17,22 @@ function ListItem({
       <div className="list__item-container">
         <div className="list__item-list">
           {createTodo.map((todo) => (
-            <ul>
-              <li key={todo.id}>{todo.item}</li>
+            <ul key={todo.id}>
+              {editTodo === todo.id && (
+                <EditList
+                  editTodoList={editTodoList}
+                  setEditText={setEditText}
+                  editText={editText}
+                  createTodo={createTodo}
+                />
+              )}
+              <li>{todo.item}</li>
               <input
                 type="checkbox"
                 onChange={() => toggleComplete(todo.id)}
                 checked={todo.completed}
               />
-              <button onChange={() => setEditTodo(todo.id)}>edit</button>
+              <button onClick={() => setEditTodo(todo.id)}>edit</button>
               <button onClick={() => deleteItem(todo)}>delete</button>
             </ul>
           ))}

@@ -5,7 +5,9 @@ import ListItem from "../ListItem/ListItem";
 import "./to-do-list.css";
 
 function ToDoList() {
-  const [createTodo, setCreateTodo] = useState([]);
+  const [createTodo, setCreateTodo] = useState(
+    JSON.parse(localStorage.getItem("todos")) || []
+  );
   const [listItem, setListItem] = useState("");
   const [editTodo, setEditTodo] = useState(null);
   const [editText, setEditText] = useState("");
@@ -13,9 +15,9 @@ function ToDoList() {
   //add to do's to list
   const addToList = () => {
     const id = new Date().getTime().toString();
-    const newList = { item: listItem, id: id, completed: false };
-    if (listItem !== "") {
-      setCreateTodo([...createTodo, newList]);
+    const newTodo = { item: listItem, id: id, completed: false };
+    if (listItem) {
+      setCreateTodo([...createTodo, newTodo]);
     } else {
       alert("You have to fill the input field");
     }
@@ -26,15 +28,6 @@ function ToDoList() {
     const temporary = JSON.stringify(createTodo);
     localStorage.setItem("todos", temporary);
   }, [createTodo]);
-
-  useEffect(() => {
-    const temporary = localStorage.getItem("todos");
-    const loadedTodos = JSON.parse(temporary);
-
-    if (loadedTodos) {
-      setCreateTodo(loadedTodos);
-    }
-  }, []);
 
   // delete to do out of the list
   const deleteItem = (item) => {
