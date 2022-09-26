@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+
 import EditList from "../EditList/EditList";
 
 function ListItem({
@@ -23,6 +23,7 @@ function ListItem({
                   editTodoList={editTodoList}
                   setEditText={setEditText}
                   editText={editText}
+                  todo={todo}
                 />
               )}
               <li>{todo.item}</li>
@@ -42,11 +43,3 @@ function ListItem({
 }
 
 export default ListItem;
-
-{
-  /* <EditList
-  editTodoList={editTodoList}
-  setEditText={setEditText}
-  editText={editText}
-/> */
-}

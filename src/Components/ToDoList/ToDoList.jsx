@@ -50,10 +50,11 @@ function ToDoList() {
   const editTodoList = (id) => {
     const updatedTodos = [...createTodo].map((todo) => {
       if (todo.id === id) {
-        todo.text = editText;
+        todo.item = editText;
       }
       return todo;
     });
+
     setCreateTodo(updatedTodos);
     setEditTodo(null);
     setEditText("");
