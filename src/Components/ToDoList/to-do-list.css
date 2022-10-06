@@ -1,0 +1,29 @@
+.todo__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.todo__input {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 10px;
+}
+
+.todo__input > input {
+  padding-left: 0.5rem;
+  border-radius: 5px;
+}
+
+.todo__button {
+  padding: 6px 4px;
+  font-size: 20px;
+  text-align: center;
+  background-color: transparent;
+  border-radius: 5px;
+}
+
+.todo__button:hover {
+  cursor: pointer;
+  scale: 1.05;
+}

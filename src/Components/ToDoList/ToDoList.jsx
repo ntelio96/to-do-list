@@ -62,8 +62,8 @@ function ToDoList() {
 
   return (
     <>
-      <div className="to__do-container">
-        <div className="to__do-input">
+      <div className="todo__container">
+        <div className="todo__input">
           <input
             type="text"
             required
@@ -71,8 +71,10 @@ function ToDoList() {
             onChange={(e) => setListItem(e.target.value)}
             placeholder="enter your task"
           />
+          <button className="todo__button" onClick={addToList}>
+            Add to list
+          </button>
         </div>
-        <button onClick={addToList}>Add to list</button>
         <ListItem
           createTodo={createTodo}
           deleteItem={deleteItem}

@@ -1,0 +1,46 @@
+.list__item-container {
+  display: flex;
+  justify-content: center;
+}
+
+.list__item-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.list__item-center {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.list__item-center > input {
+  transform: scale(1.6);
+}
+
+.edit-btn,
+.delete-btn {
+  padding: 6px 4px;
+  font-size: 20px;
+  text-align: center;
+  border: none;
+  background-color: transparent;
+}
+
+.edit-btn:hover,
+.delete-btn:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.list__item-buttons > .edit-btn {
+  color: var(--color-green);
+}
+
+.list__item-buttons > .delete-btn {
+  color: var(--color-red);
+}

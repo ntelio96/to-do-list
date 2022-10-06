@@ -1,6 +1,10 @@
 import React from "react";
 
+import { AiOutlineEdit } from "react-icons/ai";
+import { MdDeleteForever } from "react-icons/md";
+
 import EditList from "../EditList/EditList";
+import "./list-item.css";
 
 function ListItem({
   createTodo,
@@ -26,14 +30,28 @@ function ListItem({
                   todo={todo}
                 />
               )}
-              <li>{todo.item}</li>
-              <input
-                type="checkbox"
-                onChange={() => toggleComplete(todo.id)}
-                checked={todo.completed}
-              />
-              <button onClick={() => setEditTodo(todo.id)}>edit</button>
-              <button onClick={() => deleteItem(todo)}>delete</button>
+              <div className="list__item-center">
+                <input
+                  type="checkbox"
+                  onChange={() => toggleComplete(todo.id)}
+                  checked={todo.completed}
+                />
+                <li>{todo.item}</li>
+                <div className="list__item-buttons">
+                  <button
+                    className="edit-btn"
+                    onClick={() => setEditTodo(todo.id)}
+                  >
+                    <AiOutlineEdit className="size" />
+                  </button>
+                  <button
+                    className="delete-btn"
+                    onClick={() => deleteItem(todo)}
+                  >
+                    <MdDeleteForever />
+                  </button>
+                </div>
+              </div>
             </ul>
           ))}
         </div>
