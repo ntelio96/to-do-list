@@ -15,7 +15,7 @@
 
 html {
   font-size: 62.5%;
-  position: relative;
+  /* position: relative; */
 }
 
 html,
@@ -33,4 +33,9 @@ body {
   padding-top: 8rem;
   width: min(85%, 54rem);
   margin: auto;
+}
+
+button:hover {
+  cursor: pointer;
+  scale: 1.05;
 }

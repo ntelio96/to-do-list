@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { AiOutlineEdit } from "react-icons/ai";
 import { MdDeleteForever } from "react-icons/md";
@@ -16,18 +16,26 @@ function ListItem({
   setEditText,
   editText,
 }) {
+  const [toggleModal, setToggleModal] = useState(false);
+
+  const handleEditModal = (id) => {
+    setEditTodo(id);
+    setToggleModal(true);
+  };
+
   return (
     <>
       <div className="list__item-container">
         <div className="list__item-list">
           {createTodo.map((todo) => (
             <ul key={todo.id}>
-              {editTodo === todo.id && (
+              {toggleModal && editTodo === todo.id && (
                 <EditList
                   editTodoList={editTodoList}
                   setEditText={setEditText}
                   editText={editText}
                   todo={todo}
+                  closeModal={setToggleModal}
                 />
               )}
               <div className="list__item-center">
@@ -40,7 +48,7 @@ function ListItem({
                 <div className="list__item-buttons">
                   <button
                     className="edit-btn"
-                    onClick={() => setEditTodo(todo.id)}
+                    onClick={() => handleEditModal(todo.id)}
                   >
                     <AiOutlineEdit className="size" />
                   </button>

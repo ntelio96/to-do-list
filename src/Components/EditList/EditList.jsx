@@ -1,9 +1,15 @@
-import React from "react";
 import "./edit-list.css";
 
-function EditList({ editTodoList, setEditText, editText, todo }) {
+import { AiFillCloseCircle } from "react-icons/ai";
+
+function EditList({ editTodoList, setEditText, editText, todo, closeModal }) {
   return (
     <div className="edit__list-container">
+      <button className="edit__list-exit" onClick={() => closeModal(false)}>
+        <AiFillCloseCircle />
+      </button>
+      <h3>Edit Todo</h3>
+      <p>{todo.item}</p>
       <form className="edit__list-form">
         <input
           type="text"
